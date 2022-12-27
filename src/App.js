@@ -3,14 +3,23 @@ import './App.css';
 import { useState } from 'react';
 
 function App() {
+  
   const [todoList, setTodoList] = useState([]);
   const [newTask,setNewTask]= useState("");
   const handleChange =(event)=>{
     setNewTask(event.target.value)
   }
   const addTask =()=>{
+    const task={
+      id: todoList.length === 0 ? 1 : todoList[todoList.length - 1].id + 1,
+      taskName:newTask,
+      
+    }
     
-    setTodoList([...todoList,newTask]);
+    setTodoList([...todoList,task]);
+  }
+  const removeTask=(id)=>{
+  setTodoList(todoList.filter((task)=> task.id !== id));
   }
   return (
     <div className="App">
@@ -21,7 +30,10 @@ function App() {
       <div className="list">
     
       {todoList.map((task)=>{ 
-        return <h1>{task}</h1>;
+        return <div>
+          <h1>{task.taskName}</h1>
+          <button onClick={()=>removeTask(task.id)}>remove task</button>
+          </div>;
         
         
 
