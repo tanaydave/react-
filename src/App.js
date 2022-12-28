@@ -22,8 +22,8 @@ function App() {
 
   return (
     <div className="App">
-      <button onClick={fetchDetails}>predict age </button>
       <input placeholder='ex.Tanay...' onChange={(event)=>{ setName(event.target.value)}}  ></input>
+      <button className="btn" onClick={fetchDetails}>predict age </button>
       <h1>name :{predictAge?.name}</h1>
       <h1>predicted age :{predictAge?.age}</h1>
       <h1>count :{predictAge?.count}</h1>
