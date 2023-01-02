@@ -5,16 +5,19 @@ import { Home } from "./pages/Home";
 
 import { Contact } from "./pages/Contact";
 import { Navbar } from "./pages/Navbar";
-import { useState , createContext } from "react";
-import { Profile } from "./pages/profile";
 
-export const AppContext = createContext();
+import { Profile } from "./pages/profile";
+import { Query,QueryClient,QueryClientProvider } from '@tanstack/react-query';
+
+
 
 function App() {
-  const [username , setUsername]=useState("tanay")
+  
+  const client= new QueryClient();
   return (
     <div className="App">
-      <AppContext.Provider value={{username , setUsername}}>
+      <QueryClientProvider client={client}>
+      
       <Router>
         <div>
            
@@ -28,9 +31,10 @@ function App() {
            <Route path="/contact" element={<Contact />}/>
            <Route path="*" element={<h1>page not found</h1>}/>
         </Routes>
+        
       </Router>
-      </AppContext.Provider>
       
+      </QueryClientProvider>
     </div>
   );
 }
