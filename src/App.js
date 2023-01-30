@@ -1,6 +1,6 @@
 
 import './App.css';
-import  Axios  from 'axios';
+ import  Axios  from 'axios';
 import { useState } from 'react';
 
 function App() {
@@ -9,7 +9,10 @@ function App() {
  
   const [excuse,setExcuse]=useState(null)
 
-  const fetchExcuse=(excuse)=>{
+  const fetchExcuse=(excuse)=>{ 
+    // fetch(`https://excuser-three.vercel.app/v1/excuse/${excuse}/`)
+    // .then(res=>res.json())
+    // .then((data)=>(setExcuse(data[0].excuse)))
     Axios.get(`https://excuser-three.vercel.app/v1/excuse/${excuse}/`)
     .then(
       (res)=>{
@@ -18,7 +21,7 @@ function App() {
         
       }
       
-    )
+     )
   }
   
 
